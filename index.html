@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--tg-theme-bg-color, #f0f0f0); /* Задаємо або використовуємо стандартний колір */
+            background-color: var(--tg-theme-bg-color, #f0f0f0);
             margin: 0;
             padding: 0;
             display: flex;
@@ -54,21 +54,20 @@
 </head>
 <body>
     <div class="message-container">
-        <span class="editable-message" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..."></span>
-        <button class="send-button">Відправити</button>
+        <span class="editable-message" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..." id="messageInput"></span>
+        <button class="send-button" onclick="sendData()">Відправити</button>
     </div>
 <script type="application/javascript">
-  
-  const DemoApp = {
-        initData      : Telegram.WebApp.initData || '',
+    const DemoApp = {
+        initData: Telegram.WebApp.initData || '',
         initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
-        MainButton    : Telegram.WebApp.MainButton,
+        MainButton: Telegram.WebApp.MainButton,
 
         init(options) {
             document.body.style.visibility = '';
             Telegram.WebApp.ready();
             Telegram.WebApp.MainButton.setParams({
-                text      : 'CLOSE WEBVIEW',
+                text: 'CLOSE WEBVIEW',
                 is_visible: true
             }).onClick(DemoApp.close);
         },
@@ -77,8 +76,18 @@
         },
         close() {
             Telegram.WebApp.close();
-        }}
+        }
+    }
 
-      </script>
-    </body>
+    function sendData() {
+        const messageInput = document.getElementById('messageInput');
+        const messageText = messageInput.innerText;
+        
+        // Відправка даних через Telegram.WebApp.sendData(text)
+        Telegram.WebApp.sendData(messageText);
+    }
+
+    DemoApp.init();
+</script>
+</body>
 </html>
