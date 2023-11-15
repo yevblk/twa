@@ -7,14 +7,13 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--tg-theme-bg-color, #f0f0f0);
-            margin: 0;
-            padding: 0;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color, );
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            /* height: 100vh; */
         }
 
         .message-container {
@@ -25,27 +24,24 @@
             box-sizing: border-box;
         }
 
-        .editable-message,
+        .editable,
         .message-input {
             min-height: 37px;
             padding: 10px;
             background-color: var(--tg-theme-bg-color, #fff);
             color: var(--tg-theme-text-color, #000);
             border: 1px solid var(--tg-theme-button-color, #ccc);
-            border-radius: 5px;
             font-size: 16px;
             box-sizing: border-box;
-            margin-bottom: 10px;
         }
 
-        .send-button {
+        .button {
             min-width: 50px;
             min-height: 37px;
             padding: 10px;
             background-color: var(--tg-theme-button-color, #0088cc);
             color: var(--tg-theme-button-text-color, #fff);
             border: none;
-            border-radius: 0 5px 5px 0;
             cursor: pointer;
             font-size: 16px;
             box-sizing: border-box;
@@ -54,40 +50,15 @@
 </head>
 <body>
     <div class="message-container">
-        <span class="editable-message" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..." id="messageInput"></span>
-        <button class="send-button" onclick="sendData()">Відправити</button>
+        <span class="editable" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..." id="messageInput"></span>
+        <button class="button" onclick="sendData()">Відправити</button>
     </div>
-<script type="application/javascript">
-    const DemoApp = {
-        initData: Telegram.WebApp.initData || '',
-        initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
-        MainButton: Telegram.WebApp.MainButton,
-
-        init(options) {
-            document.body.style.visibility = '';
-            Telegram.WebApp.ready();
-            Telegram.WebApp.MainButton.setParams({
-                text: 'CLOSE WEBVIEW',
-                is_visible: true
-            }).onClick(DemoApp.close);
-        },
-        expand() {
-            Telegram.WebApp.expand();
-        },
-        close() {
-            Telegram.WebApp.close();
-        }
-    }
-
-    function sendData() {
-        const messageInput = document.getElementById('messageInput');
-        const messageText = messageInput.innerText;
-        
-        // Відправка даних через Telegram.WebApp.sendData(text)
-        Telegram.WebApp.sendData(messageText);
-    }
-
-    DemoApp.init();
-</script>
 </body>
+<script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+    Telegram.WebApp.onEvent('mainButtonClicked', function(){
+      tg.sendData("some string that we need to send"); 
+   });
+</script>
 </html>
