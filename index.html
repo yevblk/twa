@@ -51,17 +51,16 @@
 </head>
 <body>
     <div class="message-container">
-        <button class="button">Відправити29</button>
+        <button class="button">Відправити31</button>
         <span class="editable" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..." id="messageInput"></span>
     </div>
 </body>
 <script>
     let tg = window.Telegram.WebApp;
-    tg.MainButton.on('click', function(){
-        let messageInput = document.getElementById('messageInput');
-        let messageContent = messageInput.innerText; // Отримати вміст editable як текст
-        tg.sendData(messageContent);
-    });
+    Telegram.WebApp.onEvent('mainButtonClicked', function(){
+      tg.sendData("some string that we need to send"); 
+      //при клике на основную кнопку отправляем данные в строковом виде
+   });
 
 </script>
 </html>
