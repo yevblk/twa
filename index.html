@@ -33,6 +33,7 @@
             border: 1px solid var(--tg-theme-button-color, #ccc);
             font-size: 16px;
             box-sizing: border-box;
+            outline: none;
         }
 
         .button {
@@ -56,7 +57,6 @@
 </body>
 <script>
     let tg = window.Telegram.WebApp;
-    tg.expand();
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
       tg.sendData("some string that we need to send"); 
    });
