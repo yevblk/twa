@@ -57,6 +57,7 @@
 </body>
 <script>
     let tg = window.Telegram.WebApp;
+    tg.MainButton.text = "Changed Text"; 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
       tg.sendData("some string that we need to send"); 
    });
