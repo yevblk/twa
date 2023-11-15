@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uAnonify</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--tg-theme-bg-color, #f0f0f0); /* Задаємо або використовуємо стандартний колір */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        .editable-message,
+        .message-input {
+            min-height: 37px;
+            padding: 10px;
+            background-color: var(--tg-theme-bg-color, #fff);
+            color: var(--tg-theme-text-color, #000);
+            border: 1px solid var(--tg-theme-hint-color, #ccc);
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .send-button {
+            min-width: 50px;
+            min-height: 37px;
+            padding: 10px;
+            background-color: var(--tg-theme-button-color, #0088cc);
+            color: var(--tg-theme-button-text-color, #fff);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <span class="editable-message" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..."></span>
+        <button class="send-button">Відправити</button>
+    </div>
+</body>
+</html>
