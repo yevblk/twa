@@ -31,7 +31,7 @@
             padding: 10px;
             background-color: var(--tg-theme-bg-color, #fff);
             color: var(--tg-theme-text-color, #000);
-            border: 1px solid var(--tg-theme-hint-color, #ccc);
+            border: 1px solid var(--tg-theme-button-color, #ccc);
             border-radius: 5px;
             font-size: 16px;
             box-sizing: border-box;
@@ -57,5 +57,28 @@
         <span class="editable-message" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..."></span>
         <button class="send-button">Відправити</button>
     </div>
-</body>
+<script type="application/javascript">
+  
+  const DemoApp = {
+        initData      : Telegram.WebApp.initData || '',
+        initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
+        MainButton    : Telegram.WebApp.MainButton,
+
+        init(options) {
+            document.body.style.visibility = '';
+            Telegram.WebApp.ready();
+            Telegram.WebApp.MainButton.setParams({
+                text      : 'CLOSE WEBVIEW',
+                is_visible: true
+            }).onClick(DemoApp.close);
+        },
+        expand() {
+            Telegram.WebApp.expand();
+        },
+        close() {
+            Telegram.WebApp.close();
+        }}
+
+      </script>
+    </body>
 </html>
