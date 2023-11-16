@@ -6,12 +6,6 @@
     <title>uAnonify</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        .button::before {
-            content: "▶";
-            display: inline-block;
-            color: var(--tg-theme-hint-color);
-        }
-
         body {
             color: var(--tg-theme-text-color);
             background: var(--tg-theme-bg-color, );
@@ -24,25 +18,25 @@
         }
 
         .message-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 0px;
-}
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 0px;
+        }
 
-.editable {
-    min-height: 37px;
-    padding: 10px;
-    background-color: var(--tg-theme-bg-color, #fff);
-    color: var(--tg-theme-text-color, #000);
-    border: 1px solid var(--tg-theme-button-color, #08c);
-    font-size: 16px;
-    box-sizing: border-box;
-    outline: none;
-    flex: 1;
-    width: 100%; /* Змінено з flex: 1 на width: 100% */
-    position: relative;
+        .editable {
+            min-height: 37px;
+            padding: 10px;
+            background-color: var(--tg-theme-bg-color, #fff);
+            color: var(--tg-theme-text-color, #000);
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
         .editable::before {
@@ -51,10 +45,6 @@
             color: var(--tg-theme-button-hint-color, #aaa);
             position: absolute;
             pointer-events: none;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 10px; /* Додайте відступ від лівого краю за потреби */
-            transition: opacity 0s ease-in-out;
         }
 
         .editable:empty::before {
@@ -64,23 +54,34 @@
         .editable:not(:empty)::before {
             opacity: 0;
         }
-.button {
-    min-height: 37px;
-    padding: 10px;
-    background-color: var(--tg-theme-button-color, #08c);
-    color: var(--tg-theme-button-text-color, #fff);
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    box-sizing: border-box;
-}
 
+        .btn-icon {
+            min-height: 37px;
+            padding: 10px;
+            background: none;
+            color: var(--tg-theme-button-color, #08c);
+            border: none;
+            cursor: pointer;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            align-self: flex-end;
+        }
+
+        .btn-icon svg {
+            width: 25px;
+            height: 25px;
+        }
     </style>
 </head>
 <body>
     <div class="message-container">
         <span class="editable" role="textbox" contenteditable="true" data-placeholder="Анонімне повідомлення..." id="messageInput"></span>
-        <button id="btn" class="button"></button>
+        <button id="btn" class="btn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor">
+                <path d="M21 12l-18 6 6-18 12 12-18-6 18 6z"/>
+            </svg>
+        </button>
     </div>
 </body>
 <script>
