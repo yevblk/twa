@@ -20,8 +20,8 @@
 
         .message-container {
             display: flex;
-            flex-direction: row;
-            align-items: flex-end;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 0px;
@@ -39,6 +39,7 @@
             width: 100%;
             position: relative;
             overflow: hidden;
+            margin-bottom: 10px; /* Add margin for better spacing */
         }
 
         .editable::before {
@@ -72,6 +73,21 @@
         .btn-icon svg {
             width: 25px;
             height: 25px;
+        }
+
+        @media (min-width: 768px) {
+            /* Adjust styles for screens wider than 768px */
+            .message-container {
+                flex-direction: row;
+            }
+
+            .editable {
+                margin-bottom: 0; /* Reset margin for horizontal layout */
+            }
+
+            .btn-icon {
+                margin-left: 10px; /* Add margin for better spacing */
+            }
         }
     </style>
 </head>
