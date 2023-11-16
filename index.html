@@ -29,8 +29,8 @@
 
         .editable {
             caret-color: var(--tg-theme-button-color);
-            min-height: 37px;
-            padding: 10px;
+            min-height: 6%;
+            padding: 2%;
             background-color: var(--tg-theme-bg-color);
             color: var(--tg-theme-text-color);
             font-size: 16px;
@@ -58,17 +58,24 @@
         }
 
         .btn-icon {
-            min-height: 37px;
-            padding: 10px;
-            background: none;
-            color: var(--tg-theme-button-color, #08c);
-            border: none;
-            cursor: pointer;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            align-self: flex-end;
-        }
+    padding: 1%;
+    background: none;
+    color: var(--tg-theme-button-color, #08c);
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+
+    /* Додані властивості для розташування та розміру кнопки */
+    position: absolute;
+    right: 3%;
+    bottom: 1.75%;
+    margin-right: 7%;
+    width: 4.5%;
+    height: auto;
+}
 
         .btn-icon svg {
             width: 25px;
