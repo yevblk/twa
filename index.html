@@ -42,8 +42,28 @@
     outline: none;
     flex: 1;
     width: 100%; /* Змінено з flex: 1 на width: 100% */
-}
+    position: relative;
+        }
 
+        .editable::before {
+            content: attr(data-placeholder);
+            display: inline-block;
+            color: var(--tg-theme-button-hint-color, #aaa);
+            position: absolute;
+            pointer-events: none;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px; /* Додайте відступ від лівого краю за потреби */
+            transition: opacity 0s ease-in-out;
+        }
+
+        .editable:empty::before {
+            opacity: 1;
+        }
+
+        .editable:not(:empty)::before {
+            opacity: 0;
+        }
 .button {
     min-height: 37px;
     padding: 10px;
@@ -59,7 +79,7 @@
 </head>
 <body>
     <div class="message-container">
-        <span class="editable" role="textbox" contenteditable="true" placeholder="Введіть ваше повідомлення..." id="messageInput"></span>
+        <span class="editable" role="textbox" contenteditable="true" data-placeholder="Анонімне повідомлення..." id="messageInput"></span>
         <button id="btn" class="button"></button>
     </div>
 </body>
