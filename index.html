@@ -88,6 +88,11 @@
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
+        const params = new URLSearchParams(window.location.hash.slice(1));
+        const initDataRaw = params.get('tgWebAppData'); // user=...&query_id=...&...
+        const initData = new URLSearchParams(initDataRaw);
+        initData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);});
         // наразі не працює
         // let btn = document.getElementById("btn");
         // btn.addEventListener('click', function(){
