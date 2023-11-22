@@ -78,7 +78,7 @@
 </head>
 <body>
 <div class="message-container">
-    <span class="editable" contenteditable="true" data-placeholder="Повідомлення47" id="messageInput"
+    <span class="editable" contenteditable="true" data-placeholder="Повідомлення" id="messageInput"
           role="textbox"></span>
     <button class="btn-icon" id="btn">
         <svg fill="var(--tg-theme-bg-color)" xmlns="http://www.w3.org/2000/svg">
@@ -100,6 +100,9 @@
         initData.append(key, value);
     }
     console.log(initData.toString());
+    initData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+    });
     // наразі не працює
     // let btn = document.getElementById("btn");
     // btn.addEventListener('click', function(){
