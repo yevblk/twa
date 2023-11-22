@@ -96,9 +96,9 @@
     const initData = new URLSearchParams(initDataRaw);
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    for (const [key, value] of urlParams.entries()) {
+    urlParams.forEach((value, key) => {
         initData.append(key, value);
-    }
+    });
     initData.forEach((value, key) => {
         console.log(`${key}: ${value}`);
     });
